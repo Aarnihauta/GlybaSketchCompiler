@@ -24,11 +24,7 @@ public class Lexer
 
     public SyntaxToken NextToken()
     {
-        //<numbers>
-        //+ - * / ( )
-        //<whitespace>
-
-        if(_position >= _text.Length)
+        if (_position >= _text.Length)
         {
             return new SyntaxToken(SyntaxKind.EndOfFileToken, _position, "\0", null);
         }
@@ -37,7 +33,7 @@ public class Lexer
         {
             var start = _position;
 
-            while(char.IsDigit(Current))
+            while (char.IsDigit(Current))
             {
                 Next();
             }
@@ -63,7 +59,7 @@ public class Lexer
             return new SyntaxToken(SyntaxKind.WhitespaceToken, _position, text, value);
         }
 
-        if(Current == '+')
+        if (Current == '+')
         {
             return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
         }

@@ -1,5 +1,4 @@
 using GlybaSketchCompiler.Tokinization;
-using System.Diagnostics.Metrics;
 
 namespace TokinizationTests;
 
@@ -82,7 +81,7 @@ public class LexerTests
             var token = lexer.NextToken();
             result.Add(token);
 
-            if(token.Kind == SyntaxKind.EndOfFileToken)
+            if (token.Kind == SyntaxKind.EndOfFileToken)
             {
                 break;
             }
