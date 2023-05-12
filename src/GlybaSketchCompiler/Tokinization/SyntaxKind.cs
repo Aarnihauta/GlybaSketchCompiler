@@ -12,5 +12,7 @@ public enum SyntaxKind
     SketchToken,
     GlybaToken,
     BadToken,
-    EndOfFileToken
+    EndOfFileToken,
+    NumberExpression,
+    BinaryExpression
 }
