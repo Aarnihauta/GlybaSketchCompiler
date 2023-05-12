@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GlybaSketchCompiler.Expressions;
-public abstract class ExpressionSyntaxNode : SyntaxNode
+public abstract class ExpressionSyntaxNode : SyntaxExpressionNode
 {
     protected ExpressionSyntaxNode()
     {
