@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GlybaSketchCompiler.Expressions;
-public abstract class ExpressionSyntaxNode : SyntaxExpressionNode
+public abstract class ExpressionNode : SyntaxNode
 {
-    protected ExpressionSyntaxNode()
+    protected ExpressionNode()
     {
     }
 }
