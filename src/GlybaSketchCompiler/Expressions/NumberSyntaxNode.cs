@@ -1,4 +1,6 @@
-﻿namespace GlybaSketchCompiler.Tokinization.Syntax;
+﻿using GlybaSketchCompiler.Tokinization;
+
+namespace GlybaSketchCompiler.Expressions;
 public class NumberSyntaxNode : ExpressionSyntaxNode
 {
 

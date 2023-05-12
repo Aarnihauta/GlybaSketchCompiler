@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GlybaSketchCompiler.Tokinization.Syntax;
+namespace GlybaSketchCompiler.Expressions;
 public abstract class ExpressionSyntaxNode : SyntaxNode
 {
     protected ExpressionSyntaxNode()

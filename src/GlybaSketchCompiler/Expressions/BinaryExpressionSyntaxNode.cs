@@ -1,8 +1,10 @@
-﻿namespace GlybaSketchCompiler.Tokinization.Syntax;
+﻿using GlybaSketchCompiler.Tokinization;
+
+namespace GlybaSketchCompiler.Expressions;
 public class BinaryExpressionSyntaxNode : ExpressionSyntaxNode
 {
-	public BinaryExpressionSyntaxNode(ExpressionSyntaxNode left, SyntaxNode operatorNode, ExpressionSyntaxNode right)
-	{
+    public BinaryExpressionSyntaxNode(ExpressionSyntaxNode left, SyntaxNode operatorNode, ExpressionSyntaxNode right)
+    {
         Left = left;
         OperatorNode = operatorNode;
         Right = right;
