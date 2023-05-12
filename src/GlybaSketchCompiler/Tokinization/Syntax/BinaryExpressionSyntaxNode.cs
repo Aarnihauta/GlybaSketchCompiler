@@ -1,7 +1,7 @@
 ﻿namespace GlybaSketchCompiler.Tokinization.Syntax;
 public class BinaryExpressionSyntaxNode : ExpressionSyntaxNode
 {
-	public BinaryExpressionSyntaxNode(ExpressionSyntaxNode left, SyntaxNodeBase operatorNode, ExpressionSyntaxNode right)
+	public BinaryExpressionSyntaxNode(ExpressionSyntaxNode left, SyntaxNode operatorNode, ExpressionSyntaxNode right)
 	{
         Left = left;
         OperatorNode = operatorNode;
@@ -10,6 +10,6 @@ public class BinaryExpressionSyntaxNode : ExpressionSyntaxNode
     public override SyntaxKind Kind => SyntaxKind.BinaryExpression;
 
     public ExpressionSyntaxNode Left { get; }
-    public SyntaxNodeBase OperatorNode { get; }
+    public SyntaxNode OperatorNode { get; }
     public ExpressionSyntaxNode Right { get; }
 }
