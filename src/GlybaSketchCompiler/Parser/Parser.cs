@@ -35,7 +35,7 @@ public class Parser
 
     public SyntaxToken Current => Peek(0);
 
-    public ExpressionSyntaxNode Parse()
+    public ExpressionNode Parse()
     {
         var left = ParsePrimaryExpression();
 
@@ -43,16 +43,16 @@ public class Parser
         {
             var operatorToken = NextToken();
             var right = ParsePrimaryExpression();
-            left = new BinaryExpressionSyntaxNode(left, operatorToken, right);
+            left = new BinaryExpressionNode(left, operatorToken, right);
         }
 
         return left;
     }
 
-    private ExpressionSyntaxNode ParsePrimaryExpression()
+    private ExpressionNode ParsePrimaryExpression()
     {
         var numberToken = Match(SyntaxKind.NumberToken);
-        return new NumberExpressionSyntaxNode(numberToken);
+        return new NumberExpressionNode(numberToken);
     }
 
     private SyntaxToken NextToken()

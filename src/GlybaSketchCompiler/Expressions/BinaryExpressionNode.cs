@@ -1,9 +1,9 @@
 ﻿using GlybaSketchCompiler.Tokinization;
 
 namespace GlybaSketchCompiler.Expressions;
-public class BinaryExpressionSyntaxNode : ExpressionSyntaxNode
+public class BinaryExpressionSyntaxNode : ExpressionNode
 {
-    public BinaryExpressionSyntaxNode(ExpressionSyntaxNode left, SyntaxToken operatorToken, ExpressionSyntaxNode right)
+    public BinaryExpressionSyntaxNode(ExpressionNode left, SyntaxToken operatorToken, ExpressionNode right)
     {
         Left = left;
         OperatorNode = operatorToken;
@@ -11,7 +11,7 @@ public class BinaryExpressionSyntaxNode : ExpressionSyntaxNode
     }
     public override SyntaxKind Kind => SyntaxKind.BinaryExpression;
 
-    public ExpressionSyntaxNode Left { get; }
+    public ExpressionNode Left { get; }
     public SyntaxToken OperatorNode { get; }
-    public ExpressionSyntaxNode Right { get; }
+    public ExpressionNode Right { get; }
 }

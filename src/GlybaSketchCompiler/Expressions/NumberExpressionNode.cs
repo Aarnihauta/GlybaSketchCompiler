@@ -1,10 +1,10 @@
 ﻿using GlybaSketchCompiler.Tokinization;
 
 namespace GlybaSketchCompiler.Expressions;
-public class NumberExpressionSyntaxNode : ExpressionSyntaxNode
+public class NumberExpressionNode : ExpressionSyntaxNode
 {
 
-    public NumberExpressionSyntaxNode(SyntaxToken numberToken)
+    public NumberExpressionNode(SyntaxToken numberToken)
     {
         NumberToken = numberToken;
     }
