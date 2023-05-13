@@ -1,5 +1,4 @@
-﻿using GlybaSketchCompiler.Exceptions;
-using GlybaSketchCompiler.Expressions;
+﻿using GlybaSketchCompiler.Expressions;
 using GlybaSketchCompiler.Tokinization;
 
 namespace GlybaSketchCompiler.Parser;
@@ -20,7 +19,7 @@ public class Parser
 
             if (token.Kind == SyntaxKind.BadToken)
             {
-                throw new InvalidTokenException(token);
+                ExceptionHelper.ThrowInvalidToken(token);
             }
 
             if (token.Kind != SyntaxKind.WhitespaceToken)
@@ -64,12 +63,12 @@ public class Parser
 
     private SyntaxToken Match(SyntaxKind kind)
     {
-        if(Current.Kind == kind)
+        if (Current.Kind != kind)
         {
-            return NextToken();
+            ExceptionHelper.ThrowInvalidToken(Current);
         }
 
-        return new SyntaxToken(kind, Current.Position, null, null);
+        return NextToken();
     }
 
     private SyntaxToken Peek(int offset)
