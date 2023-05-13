@@ -9,6 +9,7 @@ public class BinaryExpressionSyntax : ExpressionSyntax
         OperatorToken = operatorToken;
         Right = right;
     }
+
     public override SyntaxKind Kind => SyntaxKind.BinaryExpression;
 
     public ExpressionSyntax Left { get; }

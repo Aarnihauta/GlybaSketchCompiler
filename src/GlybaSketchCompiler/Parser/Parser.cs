@@ -34,7 +34,16 @@ public class Parser
 
     public SyntaxToken Current => Peek(0);
 
-    public ExpressionSyntax Parse()
+
+    public SyntaxTree Parse()
+    {
+        var expression = ParseExpression();
+        var endOfFileToken = Match(SyntaxKind.EndOfFileToken);
+
+        return new SyntaxTree(expression, endOfFileToken);
+    }
+
+    private ExpressionSyntax ParseExpression()
     {
         var left = ParsePrimaryExpression();
 
