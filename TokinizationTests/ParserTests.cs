@@ -22,18 +22,9 @@ public class ParserTests
         var children = syntax.Root.GetChildren().ToList();
 
         Assert.Equal(3, children.Count);
-        Assert.IsType<BinaryExpressionSyntax>(syntax);
+        Assert.IsType<BinaryExpressionSyntax>(syntax.Root);
         Assert.IsType<NumberExpressionSyntax>(children[0]);
         Assert.IsType<SyntaxToken>(children[1]);
         Assert.IsType<NumberExpressionSyntax>(children[2]);
-    }
-
-    [Fact]
-    public void BinaryExpressionTest2()
-    {
-        var parser = new Parser("1-2+3*7");
-        var syntax = parser.Parse();
-
-        var children = syntax.Root.GetChildren().ToList();
     }
 }

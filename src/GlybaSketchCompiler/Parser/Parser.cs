@@ -36,7 +36,7 @@ public class Parser
 
 
     public SyntaxTree Parse()
-    {
+   {
         var expression = ParseExpression();
         var endOfFileToken = Match(SyntaxKind.EndOfFileToken);
 
@@ -44,10 +44,14 @@ public class Parser
     }
 
     private ExpressionSyntax ParseExpression()
-    {
+   {
         var left = ParsePrimaryExpression();
 
-        if (Current.Kind == SyntaxKind.PlusToken || Current.Kind == SyntaxKind.MinusToken)
+        while (
+            Current.Kind == SyntaxKind.PlusToken ||
+            Current.Kind == SyntaxKind.MinusToken ||
+            Current.Kind == SyntaxKind.StartToken ||
+            Current.Kind == SyntaxKind.SlashToken)
         {
             var operatorToken = NextToken();
             var right = ParsePrimaryExpression();
@@ -71,7 +75,7 @@ public class Parser
     }
 
     private SyntaxToken Match(SyntaxKind kind)
-    {
+  {
         if (Current.Kind != kind)
         {
             ExceptionHelper.ThrowInvalidToken(Current);
