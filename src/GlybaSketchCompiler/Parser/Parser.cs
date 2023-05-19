@@ -1,5 +1,6 @@
 ﻿using GlybaSketchCompiler.Expressions;
 using GlybaSketchCompiler.Tokinization;
+using System.Collections.ObjectModel;
 
 namespace GlybaSketchCompiler.Parser;
 public class Parser
@@ -29,6 +30,7 @@ public class Parser
     }
 
     public SyntaxToken Current => Peek(0);
+    public ReadOnlyCollection<string> Diagnostics => _diagnostics.AsReadOnly();
 
     public SyntaxTree Parse()
     {
