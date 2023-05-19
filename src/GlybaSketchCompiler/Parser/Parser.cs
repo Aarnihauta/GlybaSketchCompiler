@@ -85,7 +85,7 @@ public class Parser
 
         if (index >= _tokens.Length)
         {
-            return _tokens[index ^ 1];
+            return _tokens[^1];
         }
 
         return _tokens[index];
