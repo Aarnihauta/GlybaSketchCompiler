@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\GlybaSketchCompiler\GlybaSketchCompiler.csproj" />
+    <ProjectReference Include="..\..\src\GlybaSketchCompiler\GlybaSketchCompiler.csproj" />
   </ItemGroup>
 
 </Project>

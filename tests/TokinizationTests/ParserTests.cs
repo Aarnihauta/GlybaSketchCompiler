@@ -27,4 +27,12 @@ public class ParserTests
         Assert.IsType<SyntaxToken>(children[1]);
         Assert.IsType<NumberExpressionSyntax>(children[2]);
     }
+
+    [Fact]
+    public void DiagnosticTest1()
+    {
+        var parser = new Parser("1-f");
+        parser.Parse();
+        Assert.NotEmpty(parser.Diagnostics);
+    }
 }
