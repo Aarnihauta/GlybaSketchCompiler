@@ -5,22 +5,17 @@ namespace GlybaSketchCompiler.Parser;
 public class Parser
 {
     private readonly SyntaxToken[] _tokens;
+    private List<string> _diagnostics = new List<string>();
     private int _position;
 
     public Parser(string text)
     {
         var tokens = new List<SyntaxToken>();
-
         var lexer = new Lexer(text);
         SyntaxToken token;
         do
         {
             token = lexer.NextToken();
-
-            if (token.Kind == SyntaxKind.BadToken)
-            {
-                ExceptionHelper.ThrowInvalidToken(token);
-            }
 
             if (token.Kind != SyntaxKind.WhitespaceToken)
             {
@@ -30,13 +25,13 @@ public class Parser
         } while (token.Kind != SyntaxKind.EndOfFileToken);
 
         _tokens = tokens.ToArray();
+        _diagnostics.AddRange(lexer.Diagnostics);
     }
 
     public SyntaxToken Current => Peek(0);
 
-
     public SyntaxTree Parse()
-   {
+    {
         var expression = ParseExpression();
         var endOfFileToken = Match(SyntaxKind.EndOfFileToken);
 
@@ -44,7 +39,7 @@ public class Parser
     }
 
     private ExpressionSyntax ParseExpression()
-   {
+    {
         var left = ParsePrimaryExpression();
 
         while (
@@ -75,10 +70,10 @@ public class Parser
     }
 
     private SyntaxToken Match(SyntaxKind kind)
-  {
+    {
         if (Current.Kind != kind)
         {
-            ExceptionHelper.ThrowInvalidToken(Current);
+            _diagnostics.Add($"Unexpected token <{Current.Kind}>, expected {kind}");
         }
 
         return NextToken();
@@ -95,7 +90,4 @@ public class Parser
 
         return _tokens[index];
     }
-
-
-
 }

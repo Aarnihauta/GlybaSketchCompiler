@@ -1,6 +1,7 @@
 ﻿namespace GlybaSketchCompiler.Tokinization;
 public class Lexer
 {
+    private List<string> _diagnostics = new List<string>();
     private readonly string _text;
     private int _position;
 
@@ -8,6 +9,8 @@ public class Lexer
     {
         _text = text;
     }
+
+    public IEnumerable<string> Diagnostics => _diagnostics;
 
     private char Current
     {
@@ -40,7 +43,12 @@ public class Lexer
 
             var length = _position - start;
             var text = _text.Substring(start, length);
-            decimal.TryParse(text, out var value);
+            
+            if (!decimal.TryParse(text, out var value))
+            {
+                _diagnostics.Add($"Unexpected token {text}");
+            }
+
             return new SyntaxToken(SyntaxKind.NumberToken, _position, text, value);
         }
 
@@ -55,7 +63,12 @@ public class Lexer
 
             var length = _position - start;
             var text = _text.Substring(start, length);
-            decimal.TryParse(text, out var value);
+            
+            if (!decimal.TryParse(text, out var value))
+            {
+                _diagnostics.Add($"Unexpected token {text}");
+            }
+
             return new SyntaxToken(SyntaxKind.WhitespaceToken, _position, text, value);
         }
 
@@ -84,6 +97,7 @@ public class Lexer
             return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
         }
 
+        _diagnostics.Add($"Unexpected token. Position: {_position}, Token: {Current}");
         return new SyntaxToken(SyntaxKind.BadToken, _position++, _text.Substring(_position - 1, 1), null);
     }
 
