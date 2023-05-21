@@ -35,4 +35,12 @@ public class ParserTests
         parser.Parse();
         Assert.NotEmpty(parser.Diagnostics);
     }
+
+    [Fact]
+    public void ParenthesisTest1()
+    {
+        var parser = new Parser("(2+2");
+        parser.Parse();
+        Assert.NotEmpty(parser.Diagnostics);
+    }
 }
