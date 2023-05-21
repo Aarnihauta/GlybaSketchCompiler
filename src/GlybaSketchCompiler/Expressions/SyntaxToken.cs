@@ -22,4 +22,9 @@ public class SyntaxToken : SyntaxNode
     {
         return Enumerable.Empty<SyntaxNode>();
     }
+
+    public override string ToString()
+    {
+        return Text;
+    }
 }

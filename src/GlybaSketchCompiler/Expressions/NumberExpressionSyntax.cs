@@ -9,11 +9,16 @@ public class NumberExpressionSyntax : ExpressionSyntax
         NumberToken = numberToken;
     }
 
-    public override SyntaxKind Kind => SyntaxKind.NumberExpression;
+    public override SyntaxKind Kind => SyntaxKind.NumberExpressionToken;
     public SyntaxToken NumberToken { get; }
 
     public override IEnumerable<SyntaxNode> GetChildren()
     {
         yield return NumberToken;
+    }
+
+    public override string ToString()
+    {
+        return NumberToken.Text;
     }
 }

@@ -13,6 +13,7 @@ public enum SyntaxKind
     GlybaToken,
     BadToken,
     EndOfFileToken,
-    NumberExpression,
-    BinaryExpression
+    NumberExpressionToken,
+    BinaryExpressionToken,
+    ParenthesizedExpressionToken
 }

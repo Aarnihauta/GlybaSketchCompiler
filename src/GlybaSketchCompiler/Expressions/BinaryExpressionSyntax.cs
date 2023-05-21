@@ -10,7 +10,7 @@ public class BinaryExpressionSyntax : ExpressionSyntax
         Right = right;
     }
 
-    public override SyntaxKind Kind => SyntaxKind.BinaryExpression;
+    public override SyntaxKind Kind => SyntaxKind.BinaryExpressionToken;
 
     public ExpressionSyntax Left { get; }
     public SyntaxToken OperatorToken { get; }
@@ -21,5 +21,10 @@ public class BinaryExpressionSyntax : ExpressionSyntax
         yield return Left;
         yield return OperatorToken;
         yield return Right;
+    }
+
+    public override string ToString()
+    {
+        return OperatorToken.Text;
     }
 }
