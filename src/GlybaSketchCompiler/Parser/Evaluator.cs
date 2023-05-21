@@ -39,6 +39,11 @@ public class Evaluator
             };
         }
 
+        if(root is ParenthesizedExpressionSyntax p)
+        {
+            return EvaluateExpression(p.Expression);
+        }
+
         throw new ArgumentException("Unexpected node");
     }
 }
