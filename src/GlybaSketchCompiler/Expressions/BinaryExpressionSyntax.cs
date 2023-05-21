@@ -22,4 +22,9 @@ public class BinaryExpressionSyntax : ExpressionSyntax
         yield return OperatorToken;
         yield return Right;
     }
+
+    public override string ToString()
+    {
+        return OperatorToken.Text;
+    }
 }

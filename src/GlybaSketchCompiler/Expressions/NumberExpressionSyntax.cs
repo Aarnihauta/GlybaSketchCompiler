@@ -16,4 +16,9 @@ public class NumberExpressionSyntax : ExpressionSyntax
     {
         yield return NumberToken;
     }
+
+    public override string ToString()
+    {
+        return NumberToken.Text;
+    }
 }

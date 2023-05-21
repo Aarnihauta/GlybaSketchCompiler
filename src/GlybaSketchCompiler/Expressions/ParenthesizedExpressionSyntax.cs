@@ -22,4 +22,9 @@ public class ParenthesizedExpressionSyntax : ExpressionSyntax
         yield return Expression; 
         yield return CloseParenthesisToken;
     }
+
+    public override string ToString()
+    {
+        return Expression.ToString();
+    }
 }

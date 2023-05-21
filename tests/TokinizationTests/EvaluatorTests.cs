@@ -24,4 +24,26 @@ public class EvaluatorTests
 
         Assert.Equal(5, result);
     }
+
+    [Fact]
+    public void ParenthesisTest()
+    {
+        var parser = new Parser("(1+2)*3");
+        var evaluator = new Evaluator(parser.Parse());
+
+        decimal result = evaluator.Evaluate();
+
+        Assert.Equal(9, result);
+    }
+
+    [Fact]
+    public void ParenthesisTest2()
+    {
+        var parser = new Parser("(1 + (2 + 2)) *  3");
+        var evaluator = new Evaluator(parser.Parse());
+
+        decimal result = evaluator.Evaluate();
+
+        Assert.Equal(15, result);
+    }
 }
