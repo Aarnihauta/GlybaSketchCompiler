@@ -1,4 +1,4 @@
-﻿namespace GlybaSketchCompiler.Tokinization;
+﻿namespace GlybaSketchCompiler.Tokenization;
 public enum SyntaxKind
 {
     NumberToken,

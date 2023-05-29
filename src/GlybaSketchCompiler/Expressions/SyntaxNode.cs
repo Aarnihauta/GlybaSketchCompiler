@@ -1,4 +1,4 @@
-﻿using GlybaSketchCompiler.Tokinization;
+﻿using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler.Expressions;
 public abstract class SyntaxNode

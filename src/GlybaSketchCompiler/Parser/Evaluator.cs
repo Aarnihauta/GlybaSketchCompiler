@@ -1,6 +1,6 @@
 ﻿using GlybaSketchCompiler.Exceptions;
 using GlybaSketchCompiler.Expressions;
-using GlybaSketchCompiler.Tokinization;
+using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler.Parser;
 public class Evaluator

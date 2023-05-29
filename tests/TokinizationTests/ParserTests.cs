@@ -1,6 +1,6 @@
 ﻿using GlybaSketchCompiler.Expressions;
 using GlybaSketchCompiler.Parser;
-using GlybaSketchCompiler.Tokinization;
+using GlybaSketchCompiler.Tokenization;
 
 namespace TokinizationTests;
 public class ParserTests

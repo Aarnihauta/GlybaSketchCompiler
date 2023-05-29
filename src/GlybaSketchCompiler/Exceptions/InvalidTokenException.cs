@@ -1,4 +1,4 @@
-﻿using GlybaSketchCompiler.Tokinization;
+﻿using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler.Exceptions;
 public class InvalidTokenException : Exception

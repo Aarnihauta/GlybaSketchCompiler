@@ -1,5 +1,5 @@
 ﻿using GlybaSketchCompiler.Exceptions;
-using GlybaSketchCompiler.Tokinization;
+using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler;
 public class ExceptionHelper

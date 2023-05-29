@@ -1,5 +1,5 @@
 ﻿using GlybaSketchCompiler.Expressions;
-using GlybaSketchCompiler.Tokinization;
+using GlybaSketchCompiler.Tokenization;
 using System.Collections.ObjectModel;
 
 namespace GlybaSketchCompiler.Parser;

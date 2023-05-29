@@ -1,6 +1,6 @@
 ﻿using GlybaSketchCompiler.Expressions;
 
-namespace GlybaSketchCompiler.Tokinization;
+namespace GlybaSketchCompiler.Tokenization;
 public class SyntaxToken : SyntaxNode
 {
     public SyntaxToken(SyntaxKind kind, int position, string text, object value)

@@ -1,4 +1,4 @@
-﻿namespace GlybaSketchCompiler.Tokinization;
+﻿namespace GlybaSketchCompiler.Tokenization;
 public class Lexer
 {
     private List<string> _diagnostics = new List<string>();
