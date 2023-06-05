@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8E4166BF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlybaSketchCompiler", "src\GlybaSketchCompiler\GlybaSketchCompiler.csproj", "{76B405BC-69CF-4BC8-9664-480B18748521}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokenizationTests", "tests\TokinizationTests\TokenizationTests.csproj", "{2AD38E9E-A977-44C1-8773-EA32F1CE55F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokinizationTests", "tests\TokinizationTests\TokinizationTests.csproj", "{2AD38E9E-A977-44C1-8773-EA32F1CE55F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
