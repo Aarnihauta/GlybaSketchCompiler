@@ -17,12 +17,12 @@ public class EvaluatorTests
     [Fact]
     public void EvaluatorTest2()
     {
-        var parser = new Parser("1+2*2");
+        var parser = new Parser("1+2*3");
         var evaluator = new Evaluator(parser.Parse());
 
         decimal result = evaluator.Evaluate();
 
-        Assert.Equal(5, result);
+        Assert.Equal(7, result);
     }
 
     [Fact]
