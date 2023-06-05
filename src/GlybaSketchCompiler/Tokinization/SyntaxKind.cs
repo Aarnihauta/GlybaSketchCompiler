@@ -15,8 +15,8 @@ public enum SyntaxKind
     CloseParenthesisToken,
 
     //Expressions
-    LiteralExpressionToken,
-    BinaryExpressionToken,
-    ParenthesizedExpressionToken,
+    LiteralExpression,
+    BinaryExpression,
+    ParenthesizedExpression,
     UnaryExpression
 }   
