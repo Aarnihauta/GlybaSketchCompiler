@@ -91,7 +91,7 @@ internal sealed class Parser
             return new ParenthesizedExpressionSyntax(left, expression, right);
         }
         var numberToken = Match(SyntaxKind.NumberToken);
-        return new NumberExpressionSyntax(numberToken);
+        return new LiteralExpressionSyntax(numberToken);
     }
 
     private SyntaxToken NextToken()

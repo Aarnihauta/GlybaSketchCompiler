@@ -19,9 +19,9 @@ public class Evaluator
 
     private decimal EvaluateExpression(ExpressionSyntax root)
     {
-        if(root is NumberExpressionSyntax n)
+        if(root is LiteralExpressionSyntax n)
         {
-            return (decimal)n.NumberToken.Value;
+            return (decimal)n.LiteralToken.Value;
         }
 
         if(root is BinaryExpressionSyntax b)
