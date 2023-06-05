@@ -23,9 +23,9 @@ public class ParserTests
 
         Assert.Equal(3, children.Count);
         Assert.IsType<BinaryExpressionSyntax>(syntax.Root);
-        Assert.IsType<NumberExpressionSyntax>(children[0]);
+        Assert.IsType<LiteralExpressionSyntax>(children[0]);
         Assert.IsType<SyntaxToken>(children[1]);
-        Assert.IsType<NumberExpressionSyntax>(children[2]);
+        Assert.IsType<LiteralExpressionSyntax>(children[2]);
     }
 
     [Fact]

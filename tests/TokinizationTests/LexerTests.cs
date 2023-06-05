@@ -13,7 +13,7 @@ public class LexerTests
             SyntaxKind.PlusToken,
             SyntaxKind.NumberToken,
             SyntaxKind.WhitespaceToken,
-            SyntaxKind.StartToken,
+            SyntaxKind.StarToken,
             SyntaxKind.WhitespaceToken,
             SyntaxKind.NumberToken,
             SyntaxKind.EndOfFileToken,
@@ -60,7 +60,7 @@ public class LexerTests
         var lexer = new Lexer(text);
         while (true)
         {
-            var token = lexer.NextToken();
+            var token = lexer.Lex();
             result.Add(token.Kind);
             if (token.Kind == SyntaxKind.EndOfFileToken)
             {
@@ -78,7 +78,7 @@ public class LexerTests
 
         while (true)
         {
-            var token = lexer.NextToken();
+            var token = lexer.Lex();
             result.Add(token);
 
             if (token.Kind == SyntaxKind.EndOfFileToken)

@@ -19,9 +19,9 @@ public class Evaluator
 
     private decimal EvaluateExpression(ExpressionSyntax root)
     {
-        if(root is NumberExpressionSyntax n)
+        if(root is LiteralExpressionSyntax n)
         {
-            return (decimal)n.NumberToken.Value;
+            return (decimal)n.LiteralToken.Value;
         }
 
         if(root is BinaryExpressionSyntax b)
@@ -33,7 +33,7 @@ public class Evaluator
             {
                 SyntaxKind.PlusToken => left + right,
                 SyntaxKind.MinusToken => left - right,
-                SyntaxKind.StartToken => left * right,
+                SyntaxKind.StarToken => left * right,
                 SyntaxKind.SlashToken => left / right,
                 _ => throw new InvalidTokenException(b.OperatorToken)
             };

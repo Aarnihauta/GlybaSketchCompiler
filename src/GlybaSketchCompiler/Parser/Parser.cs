@@ -1,9 +1,12 @@
 ﻿using GlybaSketchCompiler.Expressions;
 using GlybaSketchCompiler.Tokenization;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TokinizationTests")]
 
 namespace GlybaSketchCompiler.Parser;
-public class Parser
+internal sealed class Parser
 {
     private readonly SyntaxToken[] _tokens;
     private List<string> _diagnostics = new List<string>();
@@ -16,7 +19,7 @@ public class Parser
         SyntaxToken token;
         do
         {
-            token = lexer.NextToken();
+            token = lexer.Lex();
 
             if (token.Kind != SyntaxKind.WhitespaceToken)
             {
@@ -34,7 +37,7 @@ public class Parser
 
     public SyntaxTree Parse()
     {
-        var expression = ParseTerm();
+        var expression = ParseExpression();
         var endOfFileToken = Match(SyntaxKind.EndOfFileToken);
 
         return new SyntaxTree(expression, endOfFileToken);
@@ -56,12 +59,17 @@ public class Parser
         return left;
     }
 
+    private ExpressionSyntax ParseExpression()
+    {
+        return ParseTerm();
+    }
+
     private ExpressionSyntax ParseFactor()
     {
         var left = ParsePrimaryExpression();
 
         while (
-            Current.Kind == SyntaxKind.StartToken ||
+            Current.Kind == SyntaxKind.StarToken ||
             Current.Kind == SyntaxKind.SlashToken)
         {
             var operatorToken = NextToken();
@@ -83,12 +91,7 @@ public class Parser
             return new ParenthesizedExpressionSyntax(left, expression, right);
         }
         var numberToken = Match(SyntaxKind.NumberToken);
-        return new NumberExpressionSyntax(numberToken);
-    }
-
-    private ExpressionSyntax ParseExpression()
-    {
-        return ParseTerm();
+        return new LiteralExpressionSyntax(numberToken);
     }
 
     private SyntaxToken NextToken()

@@ -1,19 +1,21 @@
 ﻿namespace GlybaSketchCompiler.Tokenization;
 public enum SyntaxKind
 {
-    NumberToken,
+    //Tokens
+    EndOfFileToken,
     WhitespaceToken,
+    BadToken,
+
+    NumberToken,
     PlusToken,
     MinusToken,
-    StartToken,
+    StarToken,
     SlashToken,
     OpenParenthesisToken,
     CloseParenthesisToken,
-    SketchToken,
-    GlybaToken,
-    BadToken,
-    EndOfFileToken,
-    NumberExpressionToken,
+
+    //Expressions
+    LiteralExpressionToken,
     BinaryExpressionToken,
     ParenthesizedExpressionToken
-}
+}   

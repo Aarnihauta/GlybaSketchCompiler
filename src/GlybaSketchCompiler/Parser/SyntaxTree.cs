@@ -2,7 +2,7 @@
 using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler.Parser;
-public class SyntaxTree
+public sealed class SyntaxTree
 {
     public SyntaxTree(ExpressionSyntax root, SyntaxToken endOfFileToken)
     {

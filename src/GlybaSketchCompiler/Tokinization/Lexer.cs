@@ -1,5 +1,10 @@
-﻿namespace GlybaSketchCompiler.Tokenization;
-public class Lexer
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TokinizationTests")]
+
+namespace GlybaSketchCompiler.Tokenization;
+
+internal sealed class Lexer
 {
     private List<string> _diagnostics = new List<string>();
     private readonly string _text;
@@ -25,7 +30,7 @@ public class Lexer
         }
     }
 
-    public SyntaxToken NextToken()
+    public SyntaxToken Lex()
     {
         if (_position >= _text.Length)
         {
@@ -72,29 +77,20 @@ public class Lexer
             return new SyntaxToken(SyntaxKind.WhitespaceToken, _position, text, value);
         }
 
-        if (Current == '+')
+        switch (Current)
         {
-            return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
-        }
-        else if (Current == '-')
-        {
-            return new SyntaxToken(SyntaxKind.MinusToken, _position++, "-", null);
-        }
-        else if (Current == '*')
-        {
-            return new SyntaxToken(SyntaxKind.StartToken, _position++, "*", null);
-        }
-        else if (Current == '/')
-        {
-            return new SyntaxToken(SyntaxKind.SlashToken, _position++, "/", null);
-        }
-        else if (Current == '(')
-        {
-            return new SyntaxToken(SyntaxKind.OpenParenthesisToken, _position++, "(", null);
-        }
-        else if (Current == ')')
-        {
-            return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
+            case '+':
+                return new SyntaxToken(SyntaxKind.PlusToken, _position++, "+", null);
+            case '-':
+                return new SyntaxToken(SyntaxKind.MinusToken, _position++, "-", null);
+            case '*':
+                return new SyntaxToken(SyntaxKind.StarToken, _position++, "*", null);
+            case '/':
+                return new SyntaxToken(SyntaxKind.SlashToken, _position++, "/", null);
+            case '(':
+                return new SyntaxToken(SyntaxKind.OpenParenthesisToken, _position++, "(", null);
+            case ')':
+                return new SyntaxToken(SyntaxKind.CloseParenthesisToken, _position++, ")", null);
         }
 
         _diagnostics.Add($"Unexpected token. Position: {_position}, Token: {Current}");
