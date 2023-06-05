@@ -13,7 +13,7 @@ public class LexerTests
             SyntaxKind.PlusToken,
             SyntaxKind.NumberToken,
             SyntaxKind.WhitespaceToken,
-            SyntaxKind.StartToken,
+            SyntaxKind.StarToken,
             SyntaxKind.WhitespaceToken,
             SyntaxKind.NumberToken,
             SyntaxKind.EndOfFileToken,

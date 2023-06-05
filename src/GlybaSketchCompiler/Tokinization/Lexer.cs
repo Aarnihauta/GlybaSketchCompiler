@@ -1,5 +1,10 @@
-﻿namespace GlybaSketchCompiler.Tokenization;
-public class Lexer
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("TokinizationTests")]
+
+namespace GlybaSketchCompiler.Tokenization;
+
+internal sealed class Lexer
 {
     private List<string> _diagnostics = new List<string>();
     private readonly string _text;
@@ -82,7 +87,7 @@ public class Lexer
         }
         else if (Current == '*')
         {
-            return new SyntaxToken(SyntaxKind.StartToken, _position++, "*", null);
+            return new SyntaxToken(SyntaxKind.StarToken, _position++, "*", null);
         }
         else if (Current == '/')
         {

@@ -1,7 +1,7 @@
 ﻿using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler.Expressions;
-public class ParenthesizedExpressionSyntax : ExpressionSyntax
+public sealed class ParenthesizedExpressionSyntax : ExpressionSyntax
 {
     public ParenthesizedExpressionSyntax(SyntaxToken openToken, ExpressionSyntax expression, SyntaxToken closeToken)
     {

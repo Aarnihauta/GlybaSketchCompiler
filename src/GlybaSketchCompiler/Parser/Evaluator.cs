@@ -33,7 +33,7 @@ public class Evaluator
             {
                 SyntaxKind.PlusToken => left + right,
                 SyntaxKind.MinusToken => left - right,
-                SyntaxKind.StartToken => left * right,
+                SyntaxKind.StarToken => left * right,
                 SyntaxKind.SlashToken => left / right,
                 _ => throw new InvalidTokenException(b.OperatorToken)
             };

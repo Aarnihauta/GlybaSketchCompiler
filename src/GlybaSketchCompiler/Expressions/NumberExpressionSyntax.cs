@@ -1,7 +1,7 @@
 ﻿using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler.Expressions;
-public class NumberExpressionSyntax : ExpressionSyntax
+public sealed class NumberExpressionSyntax : ExpressionSyntax
 {
 
     public NumberExpressionSyntax(SyntaxToken numberToken)
