@@ -18,4 +18,4 @@ public enum SyntaxKind
     LiteralExpressionToken,
     BinaryExpressionToken,
     ParenthesizedExpressionToken
-}
+}   
