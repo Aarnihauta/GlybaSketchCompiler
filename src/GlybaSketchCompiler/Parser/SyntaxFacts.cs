@@ -3,7 +3,7 @@
 namespace GlybaSketchCompiler.Parser;
 internal static class SyntaxFacts
 {
-    public static int GetBinaryOperatorPrecedence(SyntaxKind kind)
+    public static int GetBinaryOperatorPrecedence(this SyntaxKind kind)
     {
         switch (kind)
         {

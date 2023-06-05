@@ -49,7 +49,7 @@ internal sealed class Parser
 
         while (true)
         {
-            var precedence = SyntaxFacts.GetBinaryOperatorPrecedence(Current.Kind);
+            var precedence = Current.Kind.GetBinaryOperatorPrecedence();
             if(precedence == 0 || precedence <= parentPrecedence)
             {
                 break;
