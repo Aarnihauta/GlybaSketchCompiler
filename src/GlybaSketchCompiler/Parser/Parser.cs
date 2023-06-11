@@ -45,12 +45,23 @@ internal sealed class Parser
 
     private ExpressionSyntax ParseExpression(int parentPrecedence = 0)
     {
-        var left = ParsePrimaryExpression();
+        ExpressionSyntax left;
+        var unaryPrecedence = Current.Kind.GetUnaryOperatorPrecedence();
 
+        if (unaryPrecedence != 0 && unaryPrecedence > parentPrecedence)
+        {
+            var operatorToken = NextToken();
+            var operand = ParsePrimaryExpression();
+            left = new UnaryExpressionSyntax(operatorToken, operand);
+        }
+        else
+        {
+            left = ParsePrimaryExpression();
+        }
         while (true)
         {
-            var precedence = Current.Kind.GetBinaryOperatorPrecedence();
-            if(precedence == 0 || precedence <= parentPrecedence)
+            var binaryPrecedence = Current.Kind.GetBinaryOperatorPrecedence();
+            if (binaryPrecedence == 0 || binaryPrecedence <= parentPrecedence)
             {
                 break;
             }
@@ -65,7 +76,7 @@ internal sealed class Parser
 
     private ExpressionSyntax ParsePrimaryExpression()
     {
-        if(Current.Kind == SyntaxKind.OpenParenthesisToken)
+        if (Current.Kind == SyntaxKind.OpenParenthesisToken)
         {
             var left = NextToken();
             var expression = ParseExpression();
