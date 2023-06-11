@@ -1,5 +1,4 @@
-﻿using GlybaSketchCompiler.Exceptions;
-using GlybaSketchCompiler.Expressions;
+﻿using GlybaSketchCompiler.Expressions;
 using GlybaSketchCompiler.Tokenization;
 
 namespace GlybaSketchCompiler.Parser;
@@ -34,14 +33,31 @@ public class Evaluator
                 SyntaxKind.PlusToken => left + right,
                 SyntaxKind.MinusToken => left - right,
                 SyntaxKind.StarToken => left * right,
-                SyntaxKind.SlashToken => left / right,
-                _ => throw new InvalidTokenException(b.OperatorToken)
+                SyntaxKind.SlashToken => left / right
             };
         }
 
         if(root is ParenthesizedExpressionSyntax p)
         {
             return EvaluateExpression(p.Expression);
+        }
+
+        if(root is UnaryExpressionSyntax u)
+        {
+            var operand = EvaluateExpression(u.Operand);
+
+            if (u.Operand.Kind == SyntaxKind.PlusToken)
+            {
+                return operand;
+            }
+            else if (u.OperatorToken.Kind == SyntaxKind.MinusToken)
+            {
+                return -operand;
+            }
+            else
+            {
+                throw new Exception($"Unexpected unary operator {u.OperatorToken.Kind}");
+            }
         }
 
         throw new ArgumentException("Unexpected node");

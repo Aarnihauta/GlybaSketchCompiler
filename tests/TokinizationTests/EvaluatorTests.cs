@@ -57,4 +57,15 @@ public class EvaluatorTests
 
         Assert.Equal(9, result);
     }
+
+    [Fact]
+    public void UnaryExpressionTest()
+    {
+        var parser = new Parser("-1");
+        var evaluator = new Evaluator(parser.Parse());
+
+        decimal result = evaluator.Evaluate();
+
+        Assert.Equal(0, result);
+    }
 }
