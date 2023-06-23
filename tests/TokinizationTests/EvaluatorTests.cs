@@ -79,4 +79,26 @@ public class EvaluatorTests
 
         Assert.Equal(2, result);
     }
+
+    [Fact]
+    public void UnaryExpressionTest3()
+    {
+        var parser = new Parser("--1");
+        var evaluator = new Evaluator(parser.Parse());
+
+        decimal result = evaluator.Evaluate();
+
+        Assert.Equal(1, result);
+    }
+
+    [Fact]
+    public void UnaryExpressionTest4()
+    {
+        var parser = new Parser("--+-1");
+        var evaluator = new Evaluator(parser.Parse());
+
+        decimal result = evaluator.Evaluate();
+
+        Assert.Equal(-1, result);
+    }
 }
