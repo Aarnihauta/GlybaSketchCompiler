@@ -46,7 +46,7 @@ public class Evaluator
         {
             var operand = EvaluateExpression(u.Operand);
 
-            if (u.Operand.Kind == SyntaxKind.PlusToken)
+            if (u.OperatorToken.Kind == SyntaxKind.PlusToken)
             {
                 return operand;
             }
